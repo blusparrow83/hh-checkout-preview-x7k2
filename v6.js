@@ -88,6 +88,8 @@ function ship(){var box=$('.hh6-methods');if(!box)return;var nu=$('#order_review
 var orv2=$('#order_review'),box=mk('div','hh6-coupon','<input type="text" id="hh6c" placeholder="Discount Code" autocomplete="off"><button type="button">Apply</button>');
 var anchor=$('#coupons_list',orv2)||$('#acfw-checkout-ui-block',orv2)||$('.add_gift_card_form',orv2);orv2.insertBefore(box,anchor);
 box.querySelector('button').addEventListener('click',function(){var v=box.querySelector('input').value.trim();var sc=$('form.checkout_coupon input[name=coupon_code]');if(!v||!sc||!window.jQuery)return;sc.value=v;window.jQuery('form.checkout_coupon').trigger('submit')});
+var cm=mk('p','hh6-cmsg');cm.style.cssText='order:2;margin:8px 0 0;font:400 13px/1.4 Montserrat,sans-serif;color:#b3261e';box.parentNode.insertBefore(cm,box.nextSibling);
+if(window.jQuery){window.jQuery(document).on('ajaxComplete.hh6c',function(e,x,st){if(!st||!st.url||st.url.indexOf('apply_coupon')<0)return;var d=document.createElement('div');d.innerHTML=x.responseText||'';var er=d.querySelector('.woocommerce-error li,.woocommerce-error'),ok=d.querySelector('.woocommerce-message');cm.style.color=er?'#b3261e':'#2d6a2d';cm.textContent=((er||ok||{textContent:''}).textContent||'').replace(/\s+/g,' ').trim();var inp=document.getElementById('hh6c');if(inp&&!er)inp.value=''})}
 ship();side();titles();
 if(window.jQuery){window.jQuery(document.body).on('updated_checkout.hh6 country_to_state_changed.hh6',function(){setTimeout(function(){side();ship();titles()},0)})}
 return 'ok';
