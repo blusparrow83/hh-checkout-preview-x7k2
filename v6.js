@@ -75,7 +75,7 @@ function titles(){[].slice.call(document.querySelectorAll('.hh6-panel p.form-row
 [].slice.call(document.querySelectorAll('form.checkout select option[value=""]')).forEach(function(o){var v=tc(o.textContent).replace(/Select An /,'Select an ').replace(/Select A /,'Select a ');if(v!==o.textContent)o.textContent=v});
 var orv=document.querySelector('#order_review');
 if(orv)leaf(orv,function(t,s,p){var x=s.trim();
-if(/store credit discounts/i.test(x)){t.nodeValue=s.replace(x,'Store Credits');return}
+if(/store credit discounts/i.test(x)){t.nodeValue=s.replace(x,'Store Credit');return}
 if(/^have a gift card\??$/i.test(x)){t.nodeValue=s.replace(x,'Gift Card');return}
 if(/^(Subtotal|Shipping Today|Tax|Estimated Total|Edit cart|Order Summary|Total|Shipping|Discount)/i.test(x)&&x.length<30){var v=tc(x);if(v!==x)t.nodeValue=s.replace(x,v);return}
 if(p.closest('.hh-trust')&&x.length<60){var v2=tc(x).replace(/ With /g,' with ');if(v2!==x)t.nodeValue=s.replace(x,v2)}});
