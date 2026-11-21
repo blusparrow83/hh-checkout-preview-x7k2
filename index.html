@@ -60,6 +60,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--b);box-s
 .modal{position:fixed;inset:0;background:rgba(20,20,18,.55);display:none;place-items:center;padding:20px;z-index:9}
 .modal.show{display:grid}.modal div{background:#fff;border-radius:18px;padding:28px;max-width:420px}.modal h3{margin:0 0 8px;font:400 22px Fraunces,Georgia,serif}
 .modal button{margin-top:14px;height:44px;padding:0 22px;border:0;border-radius:999px;background:var(--g);color:#fff;font:600 14px Montserrat;cursor:pointer}
+.err{display:none;margin:6px 0 0;font-size:12.5px;color:#b3261e}.f.bad .err{display:block}.f.bad input,.f.bad select{border-color:#b3261e}
+.dl{display:flex;justify-content:space-between;padding:9px 0;font-size:14.5px;border-bottom:1px solid #eee4d2;color:#2d6a2d}.dl a{font-size:12.5px;margin-left:8px;color:#6a6b63;text-decoration:underline;cursor:pointer}
+.hint{margin:8px 0 0;font-size:12.5px;color:#6a6b63}.done{display:none;text-align:center;padding:60px 20px}.done h2{font:400 34px Fraunces,Georgia,serif;margin:0 0 10px}.done .box{max-width:520px;margin:24px auto 0;text-align:left;padding:22px 26px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
 @media(max-width:1000px){.grid{grid-template-columns:1fr;gap:18px}.sum{position:static;order:-1;padding:20px 18px}.panel{padding:22px 18px 24px}.row{grid-template-columns:1fr}h1{font-size:34px}}
 </style></head><body>
 <div class="ban">Design preview. Nothing here charges a card or places an order, and the real checkout is unchanged.</div>
@@ -68,18 +71,19 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--b);box-s
 <ol class="steps"><li class="done"><span class="c">&#10003;</span>Cart</li><li class="dash"></li><li class="on"><span class="c">2</span>Details</li><li class="dash"></li><li><span class="c">3</span>Payment</li></ol></div>
 <div class="grid"><div class="panels">
 <section class="panel"><h2><span class="n">1</span>Contact</h2>
-<div class="f"><label class="l">Email Address <span class="r">*</span></label><input type="email" id="email" value="jane.sample@example.com"></div>
+<div class="f" id="femail"><label class="l">Email Address <span class="r">*</span></label><input type="email" id="email" value="jane.sample@example.com"><p class="err">Email Address is a required field.</p></div>
 <label class="chk"><input type="checkbox"> Sign me up to receive email special offers!</label></section>
 <section class="panel"><h2><span class="n">2</span>Shipping Address</h2>
 <div class="row"><div class="f"><label class="l">First Name <span class="r">*</span></label><input type="text" value="Jane"></div><div class="f"><label class="l">Last Name <span class="r">*</span></label><input type="text" value="Sample"></div></div>
 <div class="f"><label class="l">Company Name <span class="o">(Optional)</span></label><input type="text" placeholder="Company Name"></div>
-<div class="f"><label class="l">Country / Region <span class="r">*</span></label><select><option>United States (US)</option><option>Canada</option></select></div>
-<div class="f"><label class="l">Street Address <span class="r">*</span></label><input type="text" id="street" value="123 Sample Street"></div>
+<div class="f"><label class="l">Country / Region <span class="r">*</span></label><select id="country"><option>United States (US)</option><option>Canada</option></select></div>
+<div class="f" id="fstreet"><label class="l">Street Address <span class="r">*</span></label><input type="text" id="street" value="123 Sample Street"><p class="err">Street Address is a required field.</p></div>
 <div class="f"><label class="l">Address 2 <span class="o">(Optional)</span></label><input type="text" placeholder="Apartment, Suite, Unit, Etc."></div>
 <div class="row"><div class="f"><label class="l">Town / City <span class="r">*</span></label><input type="text" value="Sampletown"></div>
-<div class="row3"><div class="f"><label class="l">State / County <span class="r">*</span></label><select><option>Florida</option><option>Georgia</option><option>Alabama</option></select></div><div class="f"><label class="l">Postcode / Zip <span class="r">*</span></label><input type="text" value="32563"></div></div></div>
+<div class="row3"><div class="f"><label class="l" id="stl">State / County <span class="r">*</span></label><select id="state"><option>Florida</option><option>Georgia</option><option>Alabama</option></select></div><div class="f"><label class="l" id="zipl">Postcode / Zip <span class="r">*</span></label><input type="text" id="zip" value="32563"></div></div></div>
 <div class="f"><label class="l">Phone <span class="r">*</span></label><input type="tel" value="5555550100"></div>
-<label class="chk"><input type="checkbox"> Ship to a Different Address?</label>
+<label class="chk"><input type="checkbox" id="alt"> Ship to a Different Address?</label>
+<div id="shipalt" style="display:none;margin-top:18px"><div class="row"><div class="f"><label class="l">First Name <span class="r">*</span></label><input type="text" placeholder="First Name"></div><div class="f"><label class="l">Last Name <span class="r">*</span></label><input type="text" placeholder="Last Name"></div></div><div class="f"><label class="l">Street Address <span class="r">*</span></label><input type="text" placeholder="House Number and Street Name"></div><div class="row"><div class="f"><label class="l">Town / City <span class="r">*</span></label><input type="text" placeholder="Town / City"></div><div class="f"><label class="l">Postcode / Zip <span class="r">*</span></label><input type="text" placeholder="Postcode / Zip"></div></div></div>
 <div class="f" style="margin-top:18px"><label class="l">Order Notes <span class="o">(Optional)</span></label><textarea placeholder="Notes About Your Order, e.g. Special Notes for Delivery."></textarea></div></section>
 <section class="panel"><h2><span class="n">3</span>Shipping Method</h2>
 <label class="method sel"><input type="radio" name="ship" value="15.05" checked>FedEx One Rate&reg;: $15.05</label>
@@ -94,28 +98,46 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--b);box-s
 <label class="chk"><input type="checkbox" id="t2"> I acknowledge and understand that Fenben brand fenbendazole is a chemical substance. No representation is made regarding its application or use, and any such declaration rests solely with the purchaser. <span style="color:var(--b)">*</span></label></div>
 <button class="place" id="place" type="button">Place Order</button></section>
 </div>
-<aside class="sum"><h2>Order Summary <a href="#" onclick="return false">Edit Cart</a></h2>
+<aside class="sum"><h2>Order Summary <a href="#" id="editcart">Edit Cart</a></h2>
 <div class="item"><div class="tile">TUDCA<i>1</i></div><div class="t"><b>Happy Healing&reg; TUDCA</b><small>One-Time Purchase</small></div><div class="p">$44.99</div></div>
 <div class="line"><span>Subtotal</span><span>$44.99</span></div>
+<div id="disc"></div>
 <div class="line"><span>Shipping Today</span><span id="shp">$15.05</span></div>
 <div class="line"><span>Tax</span><span>$0.00</span></div>
 <div class="total"><span>Estimated Total</span><span id="tot">$60.04</span></div>
-<div class="coupon"><input type="text" id="code" placeholder="Discount Code"><button type="button" id="apply">Apply</button></div><p class="msg" id="cmsg"></p>
-<div class="fold" id="f1"><button type="button"><span>Store Credit</span><span class="ch">&rsaquo;</span></button><div class="in"><p class="msg" style="margin:0">$0.00 available store credits.</p></div></div>
-<div class="fold" id="f2"><button type="button"><span>Gift Card</span><span class="ch">&rsaquo;</span></button><div class="in"><div class="coupon"><input type="text" placeholder="Enter Your Code&hellip;"><button type="button" class="ap2">Apply</button></div></div></div>
+<div class="coupon"><input type="text" id="code" placeholder="Discount Code"><button type="button" id="apply">Apply</button></div><p class="msg" id="cmsg"></p><p class="hint">Preview codes: SAMPLE10 takes 10% off.</p>
+<div class="fold" id="f1"><button type="button"><span>Store Credit</span><span class="ch">&rsaquo;</span></button><div class="in"><p class="msg" style="margin:0 0 10px">$20.00 available store credit (sample).</p><div class="coupon"><input type="text" id="scamt" placeholder="Enter Amount"><button type="button" id="scapply">Apply</button></div></div></div>
+<div class="fold" id="f2"><button type="button"><span>Gift Card</span><span class="ch">&rsaquo;</span></button><div class="in"><div class="coupon"><input type="text" id="gcode" placeholder="Enter Your Code&hellip;"><button type="button" id="gapply">Apply</button></div><p class="hint">Preview code: GIFT25 is worth $25.00.</p><p class="msg" id="gmsg"></p></div></div>
 <div class="trust"><span>Secure, Encrypted Checkout</span><span>Ships with FedEx, Tracking Included</span></div></aside></div></div>
+<div class="wrap done" id="done"><div class="eyebrow">Order</div><h2>Thank You, Jane!</h2><p>This is the confirmation step. No order was placed and no card was charged.</p><div class="box"><b>Order Preview</b><div class="line"><span>Happy Healing&reg; TUDCA &times; 1</span><span>$44.99</span></div><div class="line"><span>Shipping</span><span id="dshp"></span></div><div class="total"><span>Total</span><span id="dtot"></span></div></div><p style="margin-top:22px"><a href="#" id="back">Back to the Checkout</a></p></div>
 <div class="modal" id="m"><div><h3 id="mh">Preview Only</h3><p id="mp">No order was placed and no card was charged.</p><button type="button" id="mx">Close</button></div></div>
 <script>
 var $=function(s){return document.querySelector(s)},$$=function(s){return[].slice.call(document.querySelectorAll(s))};
+var SUB=44.99,S={disc:0,gift:0,credit:0};
 function money(n){return'$'+n.toFixed(2)}
-function recalc(){var s=parseFloat($('input[name=ship]:checked').value);$('#shp').textContent=money(s);$('#tot').textContent=money(44.99+s);$$('.method').forEach(function(m){m.classList.toggle('sel',m.querySelector('input').checked)})}
+function ship(){return parseFloat($('input[name=ship]:checked').value)}
+function recalc(){var sh=ship();var d=S.disc>0?SUB*0.10:0;var gf=S.gift,cr=S.credit;var tot=Math.max(0,SUB+sh-d-gf-cr);
+var h='';if(d>0)h+='<div class="dl"><span>Discount: SAMPLE10<a data-r="disc">Remove</a></span><span>-'+money(d)+'</span></div>';
+if(gf>0)h+='<div class="dl"><span>Gift Card: GIFT25<a data-r="gift">Remove</a></span><span>-'+money(gf)+'</span></div>';
+if(cr>0)h+='<div class="dl"><span>Store Credit<a data-r="credit">Remove</a></span><span>-'+money(cr)+'</span></div>';
+$('#disc').innerHTML=h;$('#shp').textContent=money(sh);$('#tot').textContent=money(tot);
+$$('.method').forEach(function(m){m.classList.toggle('sel',m.querySelector('input').checked)});
+$$('#disc a').forEach(function(a){a.addEventListener('click',function(){S[a.getAttribute('data-r')]=0;recalc()})})}
 $$('input[name=ship]').forEach(function(r){r.addEventListener('change',recalc)});
 $$('.fold>button').forEach(function(b){b.addEventListener('click',function(){b.parentNode.classList.toggle('open')})});
-$('#apply').addEventListener('click',function(){$('#cmsg').textContent=$('#code').value.trim()?'Preview only: codes are checked on the real store.':'Enter a code first.'});
-$$('.ap2').forEach(function(b){b.addEventListener('click',function(){b.closest('.in').insertAdjacentHTML('beforeend','<p class="msg">Preview only: gift cards are checked on the real store.</p>')})});
+$('#apply').addEventListener('click',function(){var v=$('#code').value.trim().toUpperCase();var m=$('#cmsg');if(!v){m.textContent='Please enter a coupon code.';return}
+if(v==='SAMPLE10'){S.disc=1;m.textContent='Coupon code applied successfully.';recalc()}else m.textContent='Coupon "'+v+'" does not exist!'});
+$('#gapply').addEventListener('click',function(){var v=$('#gcode').value.trim().toUpperCase();var m=$('#gmsg');if(v==='GIFT25'){S.gift=25;m.textContent='Gift card applied.';recalc()}else m.textContent=v?'That gift card code was not found.':'Enter a code first.'});
+$('#scapply').addEventListener('click',function(){var v=parseFloat($('#scamt').value);if(!(v>0)){return}S.credit=Math.min(v,20);recalc()});
+$('#alt').addEventListener('change',function(){$('#shipalt').style.display=this.checked?'block':'none'});
+$('#country').addEventListener('change',function(){var ca=this.value==='Canada';$('#stl').innerHTML=(ca?'Province':'State / County')+' <span class="r">*</span>';$('#zipl').innerHTML=(ca?'Postal Code':'Postcode / Zip')+' <span class="r">*</span>';$('#state').innerHTML=ca?'<option>Ontario</option><option>Quebec</option><option>British Columbia</option>':'<option>Florida</option><option>Georgia</option><option>Alabama</option>'});
 function show(h,p){$('#mh').textContent=h;$('#mp').textContent=p;$('#m').classList.add('show')}
 $('#mx').addEventListener('click',function(){$('#m').classList.remove('show')});
-$('#place').addEventListener('click',function(){var bad=[];['#email','#street'].forEach(function(s){var e=$(s);var ok=e.value.trim();e.classList.toggle('bad',!ok);if(!ok)bad.push(1)});
-['#t1','#t2'].forEach(function(s){var e=$(s);if(!e.checked)bad.push(1)});
-if(bad.length)show('Almost There','Fill the required fields and tick both required boxes under Payment.');else show('Preview Only','No order was placed and no card was charged. On the real store this button sends the order to Authorize.Net.')});
+$('#editcart').addEventListener('click',function(e){e.preventDefault();show('Edit Cart','On the real store this goes back to the cart page.')});
+$('#place').addEventListener('click',function(){var bad=0;[['#femail','#email'],['#fstreet','#street']].forEach(function(p){var ok=$(p[1]).value.trim();$(p[0]).classList.toggle('bad',!ok);if(!ok)bad++});
+['#t1','#t2'].forEach(function(s){if(!$(s).checked)bad++});
+if(bad){show('Almost There','Fill the required fields and tick both required boxes under Payment.');return}
+$('.wrap:not(.done)').style.display='none';$('.ban').style.display='none';$('#done').style.display='block';$('#dshp').textContent=$('#shp').textContent;$('#dtot').textContent=$('#tot').textContent;window.scrollTo(0,0)});
+$('#back').addEventListener('click',function(e){e.preventDefault();$('#done').style.display='none';$('.wrap:not(.done)').style.display='block';$('.ban').style.display='block'});
+recalc();
 </script></body></html>
