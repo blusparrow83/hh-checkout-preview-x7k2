@@ -32,6 +32,7 @@ select{-webkit-appearance:none;appearance:none;padding-right:46px;background-ima
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--b);box-shadow:0 0 0 3px rgba(158,94,0,.22)}
 .bad{border-color:#b3261e!important}
 .chk{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.5;margin:14px 0 0;color:#3a3a36}
+.chk .ct{display:block;flex:1;min-width:0}.chk .ct a{display:inline}
 .chk input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--b);flex:none}
 .method{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px;margin:0 0 10px;padding:16px 18px;border:1.5px solid #e1d5c0;border-radius:14px;cursor:pointer;font-weight:700;font-size:15.5px;color:#1d1d1b}
 .method.sel{border-color:var(--b);background:#fdf8ee}.method input{width:18px;height:18px;margin:0;accent-color:var(--b)}
@@ -95,8 +96,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--b);box-s
 <div class="f"><label class="l">Card Number <span class="r">*</span></label><input type="text" placeholder="Card Number (Preview Only)" disabled></div>
 <label class="chk"><input type="checkbox"> Securely Save to Account</label>
 <div class="terms"><b>I Understand That:</b>
-<label class="chk" style="margin-top:8px"><input type="checkbox" id="t1"> I have read and agree to the website <a href="https://thehappyhealingstore.com/terms-of-service/" target="_blank" rel="noopener">terms and conditions</a> <span style="color:var(--b)">*</span></label>
-<label class="chk"><input type="checkbox" id="t2"> I acknowledge and understand that Fenben brand fenbendazole is a chemical substance. No representation is made regarding its application or use, and any such declaration rests solely with the purchaser. <span style="color:var(--b)">*</span></label></div>
+<label class="chk" style="margin-top:8px"><input type="checkbox" id="t1"><span class="ct">I have read and agree to the website <a href="https://thehappyhealingstore.com/terms-of-service/" target="_blank" rel="noopener">terms and conditions</a> <span style="color:var(--b)">*</span></span></label>
+<label class="chk"><input type="checkbox" id="t2"><span class="ct">I acknowledge and understand that Fenben brand fenbendazole is a chemical substance. No representation is made regarding its application or use, and any such declaration rests solely with the purchaser. <span style="color:var(--b)">*</span></span></label></div>
 <button class="place" id="place" type="button">Place Order</button></section>
 </div>
 <aside class="sum"><h2>Order Summary <a href="#" id="editcart">Edit Cart</a></h2>
