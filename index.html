@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Happy Healing Checkout v6, Clickable Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap">
+<style>
+:root{--g:#003529;--b:#9e5e00;--line:#e6dccb;--card:#fcfaf4;--in:#fffdf8;--bd:#d9ccb6}
+*{box-sizing:border-box}body{margin:0;background:#f6f2e8;color:#2f2f2c;font:400 15px/1.5 Montserrat,system-ui,sans-serif}
+a{color:var(--b);text-decoration:none}a:hover{text-decoration:underline}
+.ban{background:#fff3d6;border-bottom:1px solid #e9d7a6;padding:10px 18px;text-align:center;font-size:13.5px}
+.ban a{font-weight:600}
+.wrap{max-width:1120px;margin:0 auto;padding:34px 20px 80px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:26px;flex-wrap:wrap}
+.eyebrow{font:700 12px/1 Montserrat;letter-spacing:.18em;color:var(--b);text-transform:uppercase}
+h1{font:400 44px/1.1 Fraunces,Georgia,serif;margin:8px 0 0;color:#1d1d1b}
+.steps{display:flex;align-items:center;gap:14px;font-weight:600;font-size:14px;list-style:none;margin:0;padding:0 5px 0 0}
+.steps li{display:flex;align-items:center;gap:9px;color:#6a6b63}.steps li.on{color:#1d1d1b}
+.steps .c{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--bd);font-size:13px}
+.steps .done .c{background:#2d6a2d;border-color:#2d6a2d;color:#fff}.steps .on .c{background:var(--b);border-color:var(--b);color:#fff}
+.steps .dash{width:36px;height:1px;background:var(--bd)}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:36px;align-items:start}
+.panels{display:grid;gap:18px}
+.panel{padding:28px 32px 30px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+.panel h2{display:flex;align-items:center;gap:12px;margin:0 0 20px;font:400 20px/1.2 Fraunces,Georgia,serif;color:#1d1d1b}
+.n{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--g);color:#fff;font:700 13px/1 Montserrat}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.row3{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f{margin:0 0 16px}.f.full{grid-column:1/-1}
+label.l{display:block;margin:0 0 7px;font-weight:600;font-size:13.5px;color:#2f2f2c}
+label.l .r{color:var(--b)}label.l .o{font-weight:400;color:#6a6b63}
+input[type=text],input[type=email],input[type=tel],select,textarea{width:100%;height:48px;padding:0 14px;border:1.5px solid var(--bd);border-radius:11px;background:var(--in);font:400 15.5px Montserrat;color:#2f2f2c}
+textarea{height:96px;padding:12px 14px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--b);box-shadow:0 0 0 3px rgba(158,94,0,.22)}
+.bad{border-color:#b3261e!important}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.5;margin:14px 0 0;color:#3a3a36}
+.chk input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--b);flex:none}
+.method{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px;margin:0 0 10px;padding:16px 18px;border:1.5px solid #e1d5c0;border-radius:14px;cursor:pointer;font-weight:700;font-size:15.5px;color:#1d1d1b}
+.method.sel{border-color:var(--b);background:#fdf8ee}.method input{width:18px;height:18px;margin:0;accent-color:var(--b)}
+.cards{display:flex;gap:8px;margin:0 0 16px;flex-wrap:wrap}.cards span{border:1px solid var(--bd);border-radius:6px;padding:4px 9px;font-size:12px;font-weight:700;color:#4c4d47;background:#fff}
+.pm{border:1.5px solid var(--b);background:#fdf8ee;border-radius:14px;padding:16px 18px;margin-bottom:16px}.pm b{display:block}.pm small{color:#4c4d47}
+.terms{margin-top:18px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.terms b{display:block;margin-bottom:4px}
+.place{display:flex;align-items:center;justify-content:center;width:100%;height:58px;margin:20px 0 0;border:0;border-radius:999px;background:var(--b);color:#fff;font:600 17px Montserrat;letter-spacing:.02em;cursor:pointer}
+.place:hover{background:#854f00}
+.sum{padding:26px 26px 24px;border:1px solid var(--line);border-radius:20px;background:var(--card);box-shadow:0 24px 48px -32px rgba(60,44,18,.35);position:sticky;top:20px}
+.sum h2{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 18px;font:400 20px Fraunces,Georgia,serif}.sum h2 a{font:600 13.5px Montserrat}
+.item{display:flex;gap:14px;padding-bottom:16px;border-bottom:1px solid #e8dcca}
+.tile{position:relative;flex:none;width:56px;height:64px;border-radius:10px;background:#eae3d2;display:grid;place-items:center;font:700 10px Montserrat;color:#6a6b63;text-align:center}
+.tile i{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:#4a4a46;color:#fff;font:700 11px/20px Montserrat;text-align:center;font-style:normal}
+.item .t{flex:1}.item .t b{display:block}.item .t small{color:#4c4d47}.item .p{font-weight:700}
+.line{display:flex;justify-content:space-between;padding:9px 0;font-size:14.5px;border-bottom:1px solid #eee4d2}.line span:last-child{font-weight:600}
+.total{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0 4px;font:700 19px Montserrat;color:#1d1d1b}
+.total span:first-child{font:400 19px Fraunces,Georgia,serif}
+.coupon{display:flex;gap:10px;margin-top:14px}.coupon input{flex:1;min-width:0}
+.coupon button,.ap{height:48px;padding:0 22px;border:0;border-radius:999px;background:var(--b);color:#fff;font:600 15px Montserrat;cursor:pointer}
+.msg{margin:8px 0 0;font-size:13px;color:#6a6b63}
+.fold{margin-top:14px;border-radius:12px;background:#f4eedf;overflow:hidden}
+.fold>button{width:100%;display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:0;background:none;font:400 16px Fraunces,Georgia,serif;cursor:pointer;color:#2f2f2c}
+.fold .in{display:none;padding:0 16px 16px}.fold.open .in{display:block}.fold.open>button .ch{transform:rotate(90deg)}
+.in .coupon{margin-top:0}
+.trust{margin-top:18px;padding-top:16px;border-top:1px solid #e8dcca;font-size:13px;color:#4c4d47;display:grid;gap:6px}
+.modal{position:fixed;inset:0;background:rgba(20,20,18,.55);display:none;place-items:center;padding:20px;z-index:9}
+.modal.show{display:grid}.modal div{background:#fff;border-radius:18px;padding:28px;max-width:420px}.modal h3{margin:0 0 8px;font:400 22px Fraunces,Georgia,serif}
+.modal button{margin-top:14px;height:44px;padding:0 22px;border:0;border-radius:999px;background:var(--g);color:#fff;font:600 14px Montserrat;cursor:pointer}
+@media(max-width:1000px){.grid{grid-template-columns:1fr;gap:18px}.sum{position:static;order:-1;padding:20px 18px}.panel{padding:22px 18px 24px}.row{grid-template-columns:1fr}h1{font-size:34px}}
+</style></head><body>
+<div class="ban">Design preview. Nothing here charges a card or places an order, and the real checkout is unchanged.</div>
+<div class="wrap">
+<div class="top"><div><div class="eyebrow">Order</div><h1>Checkout</h1></div>
+<ol class="steps"><li class="done"><span class="c">&#10003;</span>Cart</li><li class="dash"></li><li class="on"><span class="c">2</span>Details</li><li class="dash"></li><li><span class="c">3</span>Payment</li></ol></div>
+<div class="grid"><div class="panels">
+<section class="panel"><h2><span class="n">1</span>Contact</h2>
+<div class="f"><label class="l">Email Address <span class="r">*</span></label><input type="email" id="email" value="jane.sample@example.com"></div>
+<label class="chk"><input type="checkbox"> Sign me up to receive email special offers!</label></section>
+<section class="panel"><h2><span class="n">2</span>Shipping Address</h2>
+<div class="row"><div class="f"><label class="l">First Name <span class="r">*</span></label><input type="text" value="Jane"></div><div class="f"><label class="l">Last Name <span class="r">*</span></label><input type="text" value="Sample"></div></div>
+<div class="f"><label class="l">Company Name <span class="o">(Optional)</span></label><input type="text" placeholder="Company Name"></div>
+<div class="f"><label class="l">Country / Region <span class="r">*</span></label><select><option>United States (US)</option><option>Canada</option></select></div>
+<div class="f"><label class="l">Street Address <span class="r">*</span></label><input type="text" id="street" value="123 Sample Street"></div>
+<div class="f"><label class="l">Address 2 <span class="o">(Optional)</span></label><input type="text" placeholder="Apartment, Suite, Unit, Etc."></div>
+<div class="row"><div class="f"><label class="l">Town / City <span class="r">*</span></label><input type="text" value="Sampletown"></div>
+<div class="row3"><div class="f"><label class="l">State / County <span class="r">*</span></label><select><option>Florida</option><option>Georgia</option><option>Alabama</option></select></div><div class="f"><label class="l">Postcode / Zip <span class="r">*</span></label><input type="text" value="32563"></div></div></div>
+<div class="f"><label class="l">Phone <span class="r">*</span></label><input type="tel" value="5555550100"></div>
+<label class="chk"><input type="checkbox"> Ship to a Different Address?</label>
+<div class="f" style="margin-top:18px"><label class="l">Order Notes <span class="o">(Optional)</span></label><textarea placeholder="Notes About Your Order, e.g. Special Notes for Delivery."></textarea></div></section>
+<section class="panel"><h2><span class="n">3</span>Shipping Method</h2>
+<label class="method sel"><input type="radio" name="ship" value="15.05" checked>FedEx One Rate&reg;: $15.05</label>
+<label class="method"><input type="radio" name="ship" value="22.65">FedEx One Rate&reg; + Signature Delivery: $22.65</label></section>
+<section class="panel"><h2><span class="n">4</span>Payment</h2>
+<div class="cards"><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Discover</span></div>
+<div class="pm"><b>Credit Card</b><small>Pay securely using your credit card.</small></div>
+<div class="f"><label class="l">Card Number <span class="r">*</span></label><input type="text" placeholder="Card Number (Preview Only)" disabled></div>
+<label class="chk"><input type="checkbox"> Securely Save to Account</label>
+<div class="terms"><b>I Understand That:</b>
+<label class="chk" style="margin-top:8px"><input type="checkbox" id="t1"> I have read and agree to the website terms and conditions <span style="color:var(--b)">*</span></label>
+<label class="chk"><input type="checkbox" id="t2"> I acknowledge and understand that Fenben brand fenbendazole is a chemical substance. No representation is made regarding its application or use, and any such declaration rests solely with the purchaser. <span style="color:var(--b)">*</span></label></div>
+<button class="place" id="place" type="button">Place Order</button></section>
+</div>
+<aside class="sum"><h2>Order Summary <a href="#" onclick="return false">Edit Cart</a></h2>
+<div class="item"><div class="tile">TUDCA<i>1</i></div><div class="t"><b>Happy Healing&reg; TUDCA</b><small>One-Time Purchase</small></div><div class="p">$44.99</div></div>
+<div class="line"><span>Subtotal</span><span>$44.99</span></div>
+<div class="line"><span>Shipping Today</span><span id="shp">$15.05</span></div>
+<div class="line"><span>Tax</span><span>$0.00</span></div>
+<div class="total"><span>Estimated Total</span><span id="tot">$60.04</span></div>
+<div class="coupon"><input type="text" id="code" placeholder="Discount Code"><button type="button" id="apply">Apply</button></div><p class="msg" id="cmsg"></p>
+<div class="fold" id="f1"><button type="button"><span>Store Credits</span><span class="ch">&rsaquo;</span></button><div class="in"><p class="msg" style="margin:0">$0.00 available store credits.</p></div></div>
+<div class="fold" id="f2"><button type="button"><span>Gift Card</span><span class="ch">&rsaquo;</span></button><div class="in"><div class="coupon"><input type="text" placeholder="Enter Your Code&hellip;"><button type="button" class="ap2">Apply</button></div></div></div>
+<div class="trust"><span>Secure, Encrypted Checkout</span><span>Ships with FedEx, Tracking Included</span></div></aside></div></div>
+<div class="modal" id="m"><div><h3 id="mh">Preview Only</h3><p id="mp">No order was placed and no card was charged.</p><button type="button" id="mx">Close</button></div></div>
+<script>
+var $=function(s){return document.querySelector(s)},$$=function(s){return[].slice.call(document.querySelectorAll(s))};
+function money(n){return'$'+n.toFixed(2)}
+function recalc(){var s=parseFloat($('input[name=ship]:checked').value);$('#shp').textContent=money(s);$('#tot').textContent=money(44.99+s);$$('.method').forEach(function(m){m.classList.toggle('sel',m.querySelector('input').checked)})}
+$$('input[name=ship]').forEach(function(r){r.addEventListener('change',recalc)});
+$$('.fold>button').forEach(function(b){b.addEventListener('click',function(){b.parentNode.classList.toggle('open')})});
+$('#apply').addEventListener('click',function(){$('#cmsg').textContent=$('#code').value.trim()?'Preview only: codes are checked on the real store.':'Enter a code first.'});
+$$('.ap2').forEach(function(b){b.addEventListener('click',function(){b.closest('.in').insertAdjacentHTML('beforeend','<p class="msg">Preview only: gift cards are checked on the real store.</p>')})});
+function show(h,p){$('#mh').textContent=h;$('#mp').textContent=p;$('#m').classList.add('show')}
+$('#mx').addEventListener('click',function(){$('#m').classList.remove('show')});
+$('#place').addEventListener('click',function(){var bad=[];['#email','#street'].forEach(function(s){var e=$(s);var ok=e.value.trim();e.classList.toggle('bad',!ok);if(!ok)bad.push(1)});
+['#t1','#t2'].forEach(function(s){var e=$(s);if(!e.checked)bad.push(1)});
+if(bad.length)show('Almost There','Fill the required fields and tick both required boxes under Payment.');else show('Preview Only','No order was placed and no card was charged. On the real store this button sends the order to Authorize.Net.')});
+</script></body></html>
