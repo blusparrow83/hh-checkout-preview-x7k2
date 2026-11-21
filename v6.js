@@ -2,7 +2,7 @@
 function hh6inject(){
 var P='html body.woocommerce-checkout ',F="'Gotham HH',Montserrat,sans-serif",H="'Fertigo Pro HH',Georgia,serif";
 var css=[
-'form.checkout{display:grid!important;grid-template-columns:minmax(0,1fr) 420px;gap:36px;align-items:start}',
+'form.checkout{display:grid!important;grid-template-columns:minmax(0,1fr) 420px;column-gap:36px;row-gap:0!important;align-items:start}',
 'form.checkout>*{min-width:0}','form.checkout>.wc_coupon_message_wrap{display:none}',
 '#customer_details{grid-column:1;grid-row:1;float:none!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important}',
 '#customer_details>.col-1,#customer_details>.col-2{display:none!important}',
