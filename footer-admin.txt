@@ -1,0 +1,101 @@
+<script id="hh-checkout-r226-v6js" data-no-optimize="1" data-no-defer="1" data-cfasync="false">(function(){var b=document.body;if(!b||!b.classList.contains('admin-bar'))return;
+(function(){var b=document.body;if(!b||!b.classList.contains('woocommerce-checkout')||b.classList.contains('woocommerce-order-received'))return;
+function hh6inject(){
+var P='html body.woocommerce-checkout ',F="'Gotham HH',Montserrat,sans-serif",H="'Fertigo Pro HH',Georgia,serif";
+var css=[
+'form.checkout{display:grid!important;grid-template-columns:minmax(0,1fr) 420px;column-gap:36px;row-gap:0!important;align-items:start}',
+'form.checkout>*{min-width:0}','form.checkout>.wc_coupon_message_wrap{display:none}',
+'#customer_details{grid-column:1;grid-row:1;float:none!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important}',
+'#customer_details>.col-1,#customer_details>.col-2{display:none!important}',
+'.hh6-panels{display:grid;gap:18px}',
+'.hh6-panel{padding:28px 32px 30px;border:1px solid #e6dccb;border-radius:20px;background:#fcfaf4;box-shadow:none}',
+'.hh6-panel>h2{display:flex;align-items:center;gap:12px;margin:0 0 20px;padding:0;border:0;font:400 20px/1.2 '+H+';color:#1d1d1b}',
+'.hh6-n{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#003529;color:#fff;font:700 13px/1 '+F+'}',
+'.hh6-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}','.hh6-split{display:grid;grid-template-columns:1fr 1fr;gap:12px}',
+'.hh6-grid>p.form-row{margin:0!important;padding:0!important;width:auto!important;float:none!important;grid-column:1/-1}',
+'.hh6-grid>#billing_first_name_field,.hh6-grid>#billing_last_name_field,.hh6-grid>#billing_city_field,.hh6-grid>.hh6-split{grid-column:auto}',
+'.hh6-split>p.form-row{margin:0!important;padding:0!important;width:auto!important;float:none!important}',
+'.hh6-panel p.form-row>label{display:block;margin:0 0 7px;font:600 13.5px/1.2 '+F+';color:#2f2f2c}',
+'.hh6-panel p.form-row>label .required{color:#9e5e00;text-decoration:none}','.hh6-panel p.form-row>label .optional{font-weight:400;color:#6a6b63}',
+'.hh6-panel input:not([type=checkbox]):not([type=radio]):not([type=hidden]),.hh6-panel select{width:100%;height:48px;padding:0 14px;border:1.5px solid #d9ccb6;border-radius:11px;background:#fffdf8;box-shadow:none;font:400 15.5px/1 '+F+';color:#2f2f2c}',
+'.hh6-panel textarea{width:100%;min-height:96px;padding:12px 14px;border:1.5px solid #d9ccb6;border-radius:11px;background:#fffdf8;box-shadow:none;font:400 15.5px/1.4 '+F+';color:#2f2f2c}',
+'.hh6-panel input:focus,.hh6-panel select:focus,.hh6-panel textarea:focus{outline:none;border-color:#9e5e00;box-shadow:0 0 0 3px rgba(158,94,0,.22)}',
+'.hh6-panel .select2-container{width:100%!important}',
+'.hh6-panel .select2-container .select2-selection--single{height:48px;border:1.5px solid #d9ccb6;border-radius:11px;background:#fffdf8}',
+'.hh6-panel .select2-selection__rendered{line-height:45px!important;padding:0 48px 0 14px!important;font:400 15.5px/45px '+F+';color:#2f2f2c}',
+'.hh6-panels .hh6-panel .select2-container--default .select2-selection--single .select2-selection__arrow{height:46px!important;right:18px!important;left:auto!important;width:20px!important}',
+'.hh6-panels .hh6-panel select{-webkit-appearance:none!important;appearance:none!important;padding-right:46px!important;background-image:url(data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2212%22%20height=%228%22%20viewBox=%220%200%2012%208%22%3E%3Cpath%20d=%22M1%201l5%205%205-5%22%20fill=%22none%22%20stroke=%22%23003529%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%3C/svg%3E);background-repeat:no-repeat;background-position:right 18px center!important;background-size:12px 8px!important}',
+'#kl_newsletter_checkbox_field,#ship-to-different-address{margin:14px 0 0!important;padding:0}',
+'#kl_newsletter_checkbox_field label,#ship-to-different-address label{display:flex!important;align-items:flex-start;gap:10px;margin:0!important;font:400 14.5px/1.5 '+F+'!important;color:#3a3a36}',
+'#kl_newsletter_checkbox_field input,#ship-to-different-address input{width:18px!important;height:18px!important;margin:1px 0 0!important;accent-color:#9e5e00}',
+'.woocommerce-shipping-fields .shipping_address{margin-top:16px}',
+'.woocommerce-additional-fields{margin-top:18px}.woocommerce-additional-fields>h3{display:none}',
+'.hh6-methods ul{display:grid;gap:10px;margin:0;padding:0;list-style:none}',
+'.hh6-methods li{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px;margin:0;padding:16px 18px;border:1.5px solid #e1d5c0;border-radius:14px;background:transparent}',
+'.hh6-methods li:has(input:checked),.hh6-methods li:only-child{border-color:#9e5e00;background:#fdf8ee}',
+'.hh6-methods li input{width:18px;height:18px;margin:0;accent-color:#9e5e00}',
+'.hh6-methods li label{margin:0;font:700 15.5px/1.3 '+F+';color:#1d1d1b;cursor:pointer}',
+'#payment{margin:18px 0 0!important;padding:0!important;border:0!important;border-radius:0!important;background:none!important}',
+'#payment .place-order{padding:0!important;margin:0!important}',
+'#place_order{display:flex!important;align-items:center;justify-content:center;gap:10px;float:none!important;width:100%;height:58px;margin:20px 0 0!important;padding:0 24px;border:0;border-radius:999px;background:#9e5e00;color:#fff;font:600 17px/1 '+F+';letter-spacing:.02em;cursor:pointer}',
+'#place_order:hover{background:#854f00;color:#fff}',
+'#order_review{grid-column:2;grid-row:1;display:flex;flex-direction:column;float:none!important;width:100%!important;margin:0!important;padding:26px 26px 24px;border:1px solid #e6dccb;border-radius:20px;background:#fcfaf4;box-shadow:0 24px 48px -32px rgba(60,44,18,.35)}',
+'#order_review>table.shop_table,#order_review>table.shop_table tbody,#order_review>table.shop_table tfoot{display:contents}',
+'#order_review table thead{display:none}',
+'#order_review #order_review_heading{order:0}','#order_review tbody tr{order:1}',
+'#order_review #coupons_list,#order_review #acfw-checkout-ui-block,#order_review .add_gift_card_form{order:2;margin-top:14px}',
+'#order_review tfoot tr{order:3;display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;font:400 14.5px/1.3 '+F+';color:#3a3a36}',
+'#order_review tfoot th,#order_review tfoot td{display:block;padding:0;border:0;background:none;font:inherit;color:inherit;text-align:right}',
+'#order_review tfoot th{text-align:left}#order_review tfoot td{font-weight:600}',
+'#order_review tfoot tr.order-total{margin-top:8px;padding-top:16px;border-top:1px solid #e8dcca;font:700 19px/1 '+F+';color:#1d1d1b}',
+'#order_review .hh-trust{order:4}',
+'.woocommerce-form-coupon-toggle{display:none!important}',
+'.hh6-coupon{order:2;display:flex;gap:10px;margin-top:14px}',
+'.hh6-coupon input{flex:1;min-width:0;height:48px;padding:0 14px;border:1.5px solid #d9ccb6;border-radius:11px;background:#fffdf8;font:400 15px/1 '+F+'}',
+'.hh6-coupon button{height:48px;padding:0 22px;border:0;border-radius:999px;background:#9e5e00;color:#fff;font:600 15px/1 '+F+';cursor:pointer}',
+'.hh-top .hh-steps{margin-right:5px}',
+'a:not(.button):not([class*=btn]):not(#place_order):hover{text-decoration:underline!important}'
+].map(function(r){return r.indexOf('@')===0?r:r.replace(/(^|\})([^{}]+)\{/g,function(m,a,s){return a+s.split(',').map(function(x){return P+x.trim()}).join(',')+'{'})}).join('\n');
+css+='\n@media(min-width:992px){'+P+'#order_review{position:sticky;top:120px}}\n@media(max-width:1199px){'+P+'form.checkout{grid-template-columns:minmax(0,1fr)!important;gap:18px!important}'+P+'#order_review{grid-column:1!important;grid-row:1!important;position:static!important;order:-1;padding:20px 18px}'+P+'#customer_details{grid-column:1!important;grid-row:2!important}'+P+'.hh6-panel{padding:22px 18px 24px}'+P+'.hh6-grid{grid-template-columns:1fr!important}}';
+var old=document.getElementById('hh6-test');if(old)old.remove();var st=document.createElement('style');st.id='hh6-test';st.textContent=css;document.head.appendChild(st);
+var $=function(s,r){return(r||document).querySelector(s)},mk=function(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h)e.innerHTML=h;return e},mv=function(e,to){if(e)to.appendChild(e)};
+var panel=function(n,t,id){var s=mk('section','hh6-panel');s.id=id;s.appendChild(mk('h2','','<span class="hh6-n">'+n+'</span>'+t));return s};
+var cd=$('#customer_details');if(!cd||cd.getAttribute('data-hh6'))return 'already';cd.setAttribute('data-hh6','1');
+var wrap=mk('div','hh6-panels'),p1=panel(1,'Contact','hh6-contact'),p2=panel(2,'Shipping Address','hh6-ship'),p3=panel(3,'Shipping Method','hh6-method'),p4=panel(4,'Payment','hh6-pay');
+mv($('#billing_email_field'),p1);mv($('#kl_newsletter_checkbox_field'),p1);
+var g=mk('div','hh6-grid');['first_name','last_name','company','country','address_1','address_2','city'].forEach(function(k){mv($('#billing_'+k+'_field'),g)});
+var sp=mk('div','hh6-split');mv($('#billing_state_field'),sp);mv($('#billing_postcode_field'),sp);g.appendChild(sp);mv($('#billing_phone_field'),g);
+[].slice.call(document.querySelectorAll('.woocommerce-billing-fields p.form-row')).forEach(function(e){g.appendChild(e)});
+p2.appendChild(g);mv($('.woocommerce-shipping-fields'),p2);mv($('.woocommerce-additional-fields'),p2);
+p3.appendChild(mk('div','hh6-methods'));mv($('#payment'),p4);
+[p1,p2,p3,p4].forEach(function(p){wrap.appendChild(p)});cd.appendChild(wrap);
+var small={and:1,or:1,of:1,for:1,to:1,in:1,the:1,a:1,an:1,on:1,at:1,'e.g':1};
+function tc(s){return s.replace(/[A-Za-z][A-Za-z'’]*(\.[a-z])?/g,function(w,x,i){var l=w.toLowerCase();if(l==='e.g')return 'e.g';if(w===w.toUpperCase()&&w.length>1)return w;if(/[a-z][A-Z]/.test(w))return w;if(i>0&&small[l])return l;return w.charAt(0).toUpperCase()+w.slice(1)})}
+function leaf(root,fn){var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);var n,l=[];while(n=w.nextNode())l.push(n);l.forEach(function(t){var s=t.nodeValue;if(!s.trim())return;var p=t.parentElement;if(!p||/^(SCRIPT|STYLE|OPTION|TEXTAREA)$/.test(p.tagName))return;fn(t,s,p)})}
+function titles(){[].slice.call(document.querySelectorAll('.hh6-panel p.form-row>label')).forEach(function(l){[].slice.call(l.childNodes).forEach(function(n){if(n.nodeType===3&&n.nodeValue.trim()&&!/^\s*\*?\s*$/.test(n.nodeValue)){var v=tc(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v}else if(n.nodeType===1&&n.classList.contains('optional')){var t=tc(n.textContent);if(t!==n.textContent)n.textContent=t}})});
+[].slice.call(document.querySelectorAll('form.checkout input[placeholder],form.checkout textarea[placeholder],#order_review input[placeholder]')).forEach(function(i){var p=i.getAttribute('placeholder');if(p){var v=tc(p);if(v!==p)i.setAttribute('placeholder',v)}});
+[].slice.call(document.querySelectorAll('form.checkout select option[value=""]')).forEach(function(o){var v=tc(o.textContent).replace(/Select An /,'Select an ').replace(/Select A /,'Select a ');if(v!==o.textContent)o.textContent=v});
+var orv=document.querySelector('#order_review');
+if(orv)leaf(orv,function(t,s,p){var x=s.trim();
+if(/store credit discounts/i.test(x)){t.nodeValue=s.replace(x,'Store Credit');return}
+if(/^have a gift card\??$/i.test(x)){t.nodeValue=s.replace(x,'Gift Card');return}
+if(/^(Subtotal|Shipping Today|Tax|Estimated Total|Edit cart|Order Summary|Total|Shipping|Discount)/i.test(x)&&x.length<30){var v=tc(x);if(v!==x)t.nodeValue=s.replace(x,v);return}
+if(p.closest('.hh-trust')&&x.length<60){var v2=tc(x).replace(/ With /g,' with ');if(v2!==x)t.nodeValue=s.replace(x,v2)}});
+[].slice.call(document.querySelectorAll('#ship-to-different-address label,#ship-to-different-address label span')).forEach(function(l){[].slice.call(l.childNodes).forEach(function(n){if(n.nodeType===3&&/^ship to a different address\??$/i.test(n.nodeValue.trim()))n.nodeValue=' Ship to a Different Address?'})})}
+function stars(){[].slice.call(document.querySelectorAll('#hh6-pay label')).forEach(function(l){var a=l.querySelector('abbr.required');if(!a||a.getAttribute('data-hh6s'))return;var t=l.querySelector('.woocommerce-terms-and-conditions-checkbox-text')||l.querySelector('span');if(!t)return;a.setAttribute('data-hh6s','1');t.appendChild(document.createTextNode(' '));t.appendChild(a)})}
+var _t=titles;titles=function(){_t();stars();var pb=document.querySelector('#place_order');if(pb&&/^place order$/i.test(pb.textContent.trim())&&pb.textContent.trim()!=='Place Order'){pb.textContent='Place Order';pb.setAttribute('data-value','Place Order')}/*hh6-btn*/};
+function side(){var cl=$('#coupons_list'),orv=$('#order_review'),ac=$('#acfw-checkout-ui-block');if(cl&&orv&&ac&&cl.parentNode!==orv)orv.insertBefore(cl,ac)}
+function ship(){var box=$('.hh6-methods');if(!box)return;var nu=$('#order_review #shipping_method');if(nu){[].slice.call(box.children).forEach(function(c){c.remove()});box.appendChild(nu)}var inp=box.querySelector('input.shipping_method:checked')||box.querySelector('input.shipping_method[type=hidden]');var lab=inp&&inp.id?box.querySelector('label[for="'+inp.id+'"]'):null;var td=$('#order_review tr.woocommerce-shipping-totals td');if(td&&lab){var a=lab.querySelector('.amount'),old=td.querySelector('.hh6-amt');if(old)old.remove();var sp=document.createElement('span');sp.className='hh6-amt';sp.textContent=a?a.textContent:(/free/i.test(lab.textContent)?'Free':'');td.appendChild(sp)}}
+var orv2=$('#order_review'),box=mk('div','hh6-coupon','<input type="text" id="hh6c" placeholder="Discount Code" autocomplete="off"><button type="button">Apply</button>');
+var anchor=$('#coupons_list',orv2)||$('#acfw-checkout-ui-block',orv2)||$('.add_gift_card_form',orv2);orv2.insertBefore(box,anchor);
+box.querySelector('button').addEventListener('click',function(){var v=box.querySelector('input').value.trim();var sc=$('form.checkout_coupon input[name=coupon_code]');if(!v||!sc||!window.jQuery)return;sc.value=v;window.jQuery('form.checkout_coupon').trigger('submit')});
+var cm=mk('p','hh6-cmsg');cm.style.cssText='order:2;margin:8px 0 0;font:400 13px/1.4 Montserrat,sans-serif;color:#b3261e';box.parentNode.insertBefore(cm,box.nextSibling);
+if(window.jQuery){window.jQuery(document).on('ajaxComplete.hh6c',function(e,x,st){if(!st||!st.url||st.url.indexOf('apply_coupon')<0)return;var d=document.createElement('div');d.innerHTML=x.responseText||'';var er=d.querySelector('.woocommerce-error li,.woocommerce-error'),ok=d.querySelector('.woocommerce-message');cm.style.color=er?'#b3261e':'#2d6a2d';cm.textContent=((er||ok||{textContent:''}).textContent||'').replace(/\s+/g,' ').trim();var inp=document.getElementById('hh6c');if(inp&&!er)inp.value=''})}
+ship();side();titles();
+if(window.jQuery){window.jQuery(document.body).on('updated_checkout.hh6 country_to_state_changed.hh6',function(){setTimeout(function(){side();ship();titles()},0)})}
+return 'ok';
+}
+try{hh6inject()}catch(e){}
+})();
+
+})();</script>
