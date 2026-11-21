@@ -80,7 +80,7 @@ if(/store credit discounts/i.test(x)){t.nodeValue=s.replace(x,'Store Credit');re
 if(/^have a gift card\??$/i.test(x)){t.nodeValue=s.replace(x,'Gift Card');return}
 if(/^(Subtotal|Shipping Today|Tax|Estimated Total|Edit cart|Order Summary|Total|Shipping|Discount)/i.test(x)&&x.length<30){var v=tc(x);if(v!==x)t.nodeValue=s.replace(x,v);return}
 if(p.closest('.hh-trust')&&x.length<60){var v2=tc(x).replace(/ With /g,' with ');if(v2!==x)t.nodeValue=s.replace(x,v2)}});
-[].slice.call(document.querySelectorAll('#ship-to-different-address label')).forEach(function(l){[].slice.call(l.childNodes).forEach(function(n){if(n.nodeType===3&&/^ship to a different address\??$/i.test(n.nodeValue.trim()))n.nodeValue=' Ship to a Different Address?'})})}
+[].slice.call(document.querySelectorAll('#ship-to-different-address label,#ship-to-different-address label span')).forEach(function(l){[].slice.call(l.childNodes).forEach(function(n){if(n.nodeType===3&&/^ship to a different address\??$/i.test(n.nodeValue.trim()))n.nodeValue=' Ship to a Different Address?'})})}
 function stars(){[].slice.call(document.querySelectorAll('#hh6-pay label')).forEach(function(l){var a=l.querySelector('abbr.required');if(!a||a.getAttribute('data-hh6s'))return;var t=l.querySelector('.woocommerce-terms-and-conditions-checkbox-text')||l.querySelector('span');if(!t)return;a.setAttribute('data-hh6s','1');t.appendChild(document.createTextNode(' '));t.appendChild(a)})}
 var _t=titles;titles=function(){_t();stars()};
 function side(){var cl=$('#coupons_list'),orv=$('#order_review'),ac=$('#acfw-checkout-ui-block');if(cl&&orv&&ac&&cl.parentNode!==orv)orv.insertBefore(cl,ac)}
